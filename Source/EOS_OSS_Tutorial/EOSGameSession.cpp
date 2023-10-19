@@ -118,7 +118,7 @@ void AEOSGameSession::HandleCreateSessionCompleted(FName EOSSessionName, bool bW
     // Nothing special here, simply log that the session is created.
     if (bWasSuccessful)
     {
-        bSessionExists = true; 
+        bSessionExists = true;
         UE_LOG(LogTemp, Log, TEXT("Session: %s Created!"), *EOSSessionName.ToString());
     }
     else

@@ -22,6 +22,7 @@ void AEOSPlayerState::BeginPlay()
 
 void AEOSPlayerState::UpdateStat(FString StatName, int32 StatValue)
 {
+	return;
 	// This function will add a StatValue to the StatName on the EOS backend.
 	// If the achievement stat threshold is meant, the achievement will unlock
 	IOnlineSubsystem* Subsystem = Online::GetSubsystem(GetWorld());
@@ -65,6 +66,7 @@ void AEOSPlayerState::UpdateStat(FString StatName, int32 StatValue)
 
 void AEOSPlayerState::QueryLeaderboardGlobal(FName LeaderboardName)
 {
+	return;
 	// This function will retrieve a global leaderboard for a certain rank range
 	// The rank range is hardcoded to 0,10. In a real game you may want to pass this as a parameter. 
 
@@ -103,6 +105,7 @@ void AEOSPlayerState::QueryLeaderboardGlobal(FName LeaderboardName)
 // Make sure in your code you don't call this too early. The EOS OSS needs to populate friend list shortly after login. 
 void AEOSPlayerState::QueryLeaderboardFriends(FString StatName, FName LeaderboardName)
 {
+	return;
 	// This function will retrieve a friend leaderboard with specific columns and a sorted column.
 	// For this course we are using a single Stat. 
 
@@ -143,6 +146,7 @@ void AEOSPlayerState::QueryLeaderboardFriends(FString StatName, FName Leaderboar
 
 void AEOSPlayerState::HandleQueryLeaderboarComplete(bool bWasSuccessful, FOnlineLeaderboardReadRef GlobalLeaderboardReadRef)
 {
+	return;
 	// Function triggered when either global or friend leaderboard query completes. 
 	IOnlineSubsystem* Subsystem = Online::GetSubsystem(GetWorld());
 	IOnlineLeaderboardsPtr Leaderboards = Subsystem->GetLeaderboardsInterface();

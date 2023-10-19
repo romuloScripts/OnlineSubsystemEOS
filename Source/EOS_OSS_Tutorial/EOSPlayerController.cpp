@@ -301,7 +301,7 @@ void AEOSPlayerController::JoinSession()
 void AEOSPlayerController::HandleJoinSessionCompleted(FName SessionName, EOnJoinSessionCompleteResult::Type Result)
 {
     // Tutorial 4: This function is triggered via the callback we set in JoinSession once the session is joined (or there is a failure)
-
+    UE_LOG(LogTemp, Log, TEXT("ConnectString: %s"),*ConnectString);
     IOnlineSubsystem* Subsystem = Online::GetSubsystem(GetWorld());
     IOnlineSessionPtr Session = Subsystem->GetSessionInterface();
 #if P2PMODE

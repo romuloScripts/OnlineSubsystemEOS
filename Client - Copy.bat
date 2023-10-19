@@ -1,1 +1,1 @@
-"F:\Instalations\Epic Games\UE_5.1\Engine\Binaries\Win64\UnrealEditor.exe" "F:\GitProjects\EOS-Getting-Started\OnlineSubsystemEOS\EOS_OSS_Tutorial.uproject" ThirdPersonMap -debug -log -game -AUTH_TYPE="developer" -AUTH_LOGIN="localhost:8081" -AUTH_PASSWORD="mumucodes" -epicapp="Client"
+"F:\Instalations\Epic Games\UE_5.1\Engine\Binaries\Win64\UnrealEditor.exe" "F:\GitProjects\OnlineSubsystemEOS\EOS_OSS_Tutorial.uproject" ThirdPersonMap -debug -log -game -AUTH_TYPE="developer" -AUTH_LOGIN="localhost:8081" -AUTH_PASSWORD="mumucodes" -epicapp="Client"
