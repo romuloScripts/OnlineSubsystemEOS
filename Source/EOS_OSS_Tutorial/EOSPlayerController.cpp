@@ -407,56 +407,57 @@ void AEOSPlayerController::HandleEnumTitleFilesCompleted(bool bWasSuccessfull, c
 
 void AEOSPlayerController::HandleReadTitleFileCompleted(bool bWasSuccessfull, const FString& FileName)
 {
+    return;
     // Tutorial 6: Callback function for reading 1st file in title data storage. 
-    IOnlineSubsystem* Subsystem = Online::GetSubsystem(GetWorld());
-    IOnlineTitleFilePtr TitleFile = Subsystem->GetTitleFileInterface();
-
-    if (bWasSuccessfull)
-    {
-        TArray<uint8> FileContents; // We need an array to output the serialized title data storage file data.  
-        if (TitleFile->GetFileContents(FileName, FileContents))
-        {
-            // Deserialize file and write to logs
-            char* FileData;
-            try
-            {
-                FileData = new char[FileContents.Num()];
-            }
-            catch (std::bad_alloc)
-            {
-                UE_LOG(LogTemp, Error, TEXT("Unable to allocate memory for title storage data")); 
-                
-                // Clear our handle and reset the delegate. 
-                TitleFile->ClearOnReadFileCompleteDelegate_Handle(ReadTitleFileDelegateHandle);
-                ReadTitleFileDelegateHandle.Reset();
-                return; 
-            }
-            
-            // Check file contents and hardcode log outputs to prevent log injection
-            std::memcpy(FileData, FileContents.GetData(), FileContents.Num());
-            FString FileDataAsFString = ANSI_TO_TCHAR(FileData); 
-            if (FileDataAsFString.Equals("Game data"))
-            {
-                UE_LOG(LogTemp, Log, TEXT("File contents are: Game data"));
-            }
-
-            // Clean up memory
-            delete FileData;
-            FileData = nullptr; 
-        }
-        else
-        {
-            UE_LOG(LogTemp, Error, TEXT("Failed to get file contents for file named: %s."), *FileName);
-        }
-    }
-    else
-    {
-        UE_LOG(LogTemp, Error, TEXT("Error reading title storage file %s."), *FileName);
-    }
-    
-    // Clear our handle and reset the delegate. 
-    TitleFile->ClearOnReadFileCompleteDelegate_Handle(ReadTitleFileDelegateHandle);
-    ReadTitleFileDelegateHandle.Reset();
+    // IOnlineSubsystem* Subsystem = Online::GetSubsystem(GetWorld());
+    // IOnlineTitleFilePtr TitleFile = Subsystem->GetTitleFileInterface();
+    //
+    // if (bWasSuccessfull)
+    // {
+    //     TArray<uint8> FileContents; // We need an array to output the serialized title data storage file data.  
+    //     if (TitleFile->GetFileContents(FileName, FileContents))
+    //     {
+    //         // Deserialize file and write to logs
+    //         char* FileData;
+    //         try
+    //         {
+    //             FileData = new char[FileContents.Num()];
+    //         }
+    //         catch (std::bad_alloc)
+    //         {
+    //             UE_LOG(LogTemp, Error, TEXT("Unable to allocate memory for title storage data")); 
+    //             
+    //             // Clear our handle and reset the delegate. 
+    //             TitleFile->ClearOnReadFileCompleteDelegate_Handle(ReadTitleFileDelegateHandle);
+    //             ReadTitleFileDelegateHandle.Reset();
+    //             return; 
+    //         }
+    //         
+    //         // Check file contents and hardcode log outputs to prevent log injection
+    //         std::memcpy(FileData, FileContents.GetData(), FileContents.Num());
+    //         FString FileDataAsFString = ANSI_TO_TCHAR(FileData); 
+    //         if (FileDataAsFString.Equals("Game data"))
+    //         {
+    //             UE_LOG(LogTemp, Log, TEXT("File contents are: Game data"));
+    //         }
+    //
+    //         // Clean up memory
+    //         delete FileData;
+    //         FileData = nullptr; 
+    //     }
+    //     else
+    //     {
+    //         UE_LOG(LogTemp, Error, TEXT("Failed to get file contents for file named: %s."), *FileName);
+    //     }
+    // }
+    // else
+    // {
+    //     UE_LOG(LogTemp, Error, TEXT("Error reading title storage file %s."), *FileName);
+    // }
+    //
+    // // Clear our handle and reset the delegate. 
+    // TitleFile->ClearOnReadFileCompleteDelegate_Handle(ReadTitleFileDelegateHandle);
+    // ReadTitleFileDelegateHandle.Reset();
 }
 
 void AEOSPlayerController::WritePlayerDataStorage(FString FileName, TArray<uint8> FileData)

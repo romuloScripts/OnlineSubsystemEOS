@@ -8,6 +8,7 @@
 #include "OnlineSubsystemTypes.h"
 #include "Interfaces/OnlineSessionInterface.h"
 #include "OnlineSessionSettings.h"
+#include "GameFramework/PlayerState.h"
 #include "Interfaces/OnlineIdentityInterface.h"
 #include "Interfaces/OnlineStatsInterface.h"
 
@@ -201,7 +202,7 @@ void AEOSGameSession::UnregisterPlayer(const APlayerController* ExitingPlayer)
                     this,
                     &ThisClass::HandleUnregisterPlayerCompleted));
 
-            if (!Session->UnregisterPlayer(SessionName, *ExitingPlayer->PlayerState->UniqueId))
+            if (!Session->UnregisterPlayer(SessionName, *ExitingPlayer->PlayerState->GetUniqueId()))
             {
                 UE_LOG(LogTemp, Warning, TEXT("Failed to Unregister Player!"));
                 Session->ClearOnUnregisterPlayersCompleteDelegate_Handle(UnregisterPlayerDelegateHandle);
